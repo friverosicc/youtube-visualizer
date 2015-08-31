@@ -1,0 +1,25 @@
+{
+  "name": "zbox-challenge",
+  "version": "0.0.1",
+  "description": "Desafio de zbox para evaluar habilidades",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/friverosicc/zbox-challenge.git"
+  },
+  "author": "Francisco Riveros",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/friverosicc/zbox-challenge/issues"
+  },
+  "homepage": "https://github.com/friverosicc/zbox-challenge#readme",
+  "dependencies": {
+    "electron-prebuilt": "^0.31.1"
+  },
+  "devDependencies": {
+    "bower": "^1.5.2"
+  }
+}
