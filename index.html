@@ -20,9 +20,9 @@
 			</iframe>
 		</div>
 		<div>
-			<p>
-				{{videos}}
-			</p>
+			<ul>
+				<li ng-repeat="video in videos">{{video.snippet.title}}</li>
+			</ul>
 		<div>
 
 		<!-- Controlador angular de la vista -->
