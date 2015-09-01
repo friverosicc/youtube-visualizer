@@ -30,8 +30,10 @@
 			$scope.mostrarReproductor = false;
 			$scope.videos = [];
 			$scope.video = { url : '' };
+			$scope.mostrarBotonSiguiente = false;
 
-			var _url = 'http://www.youtube.com/embed/';			
+			var _url = 'http://www.youtube.com/embed/';
+			var _buscandoMas = false;
 
 			/**
 			 * Busca el listado de videos que coinciden con el 
@@ -41,11 +43,23 @@
 				$scope.mostrarReproductor = false;
 				$scope.video.url = '';
 
-				youtubeResource.buscar($scope.filtro.text)
+				youtubeResource.buscar($scope.filtro.text, $scope.filtro.nextPageToken)
 				.then(function(response) {
-					$scope.videos = response.data.items;
-					$scope.filtro.nextPageToken = response.data.nextPageToken;				
+					if(_buscandoMas) {
+						$scope.videos = $scope.videos.concat(response.data.items);							
+					} else {
+						$scope.videos = response.data.items;	
+					}
+					
+					$scope.filtro.nextPageToken = response.data.nextPageToken;
+					$scope.mostrarBotonSiguiente = true;
+					_buscandoMas = false;
 				});
+			};
+
+			$scope.siguientePagina = function() {
+				_buscandoMas = true;	
+				$scope.buscarVideos();			
 			};
 
 			/**
