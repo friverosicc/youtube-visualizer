@@ -1,40 +1,51 @@
 <!DOCTYPE html>
 <html ng-app="zbox-challenge">
 	<head>
-		<title>Zbox Challenge</title>
+		<title>Zbox Challenge</title>		
 	</head>
-	<body ng-controller="AppController">
-		<div>
-			<input 	type="text" 
-					ng-model="filtro.text">
-			</input>
-			<button ng-click="buscarVideos()">Buscar</button>
-		</div>
-		<div>
-			<iframe id="player" 
-					type="text/html" 
-					width="640" 
-					height="390" 
-					src="{{video.url}}" 
-					frameborder="0"
-					allowfullscreen
-					ng-show="mostrarReproductor">
-			</iframe>
-		</div>
-		<div>
-			<ul>
-				<li ng-repeat="video in videos">
-					<div 	style="height:90px; width:120px; background-image: url({{video.snippet.thumbnails.default.url}});"
-							ng-click="reproducir(video.id.videoId)">
-					</div>
-					{{ video.snippet.title }}
-				</li>
-			</ul>
-		<div>
+	<body ng-controller="AppController" layout="column">
+		<md-toolbar>
+			<div class="md-toolbar-tools" layout="row">
+				<md-input-container flex="50">
+					<input  style="color:#fff;" ng-model="filtro.text"></input>				
+				</md-input-container>
+				<md-button ng-click="buscarVideos()">Buscar</md-button>
+			</div>
+		</md-toolbar>
+		
 
+		<md-content layout="column" flex layout-padding>
+			<div layout="row" flex>
+				<iframe id="player" 
+						type="text/html" 
+						flex
+						height="390" 
+						src="{{video.url}}" 
+						frameborder="0"
+						allowfullscreen
+						ng-show="mostrarReproductor">
+				</iframe>
+			</div>
+			<div layout="column" layout-margin>
+				<div layout="row" ng-repeat="video in videos" layout-margin>
+					<img 	ng-src="{{video.snippet.thumbnails.default.url}}" ng-click="reproducir(video.id.videoId)"
+							style="cursor:pointer;"/>
+
+					<div layout="column" layout-align="start start">
+						<h3>{{ video.snippet.title }}</h3>						
+						<p>{{ video.snippet.description }}</p> 
+					</div>
+				</div>								
+			</div>
+			
+			
 		<!-- Controlador angular de la vista -->
 		<script>			
-			require('./src/app');
+			require('./src/app');			 
+			var link = document.createElement('link');
+			link.setAttribute('rel', 'stylesheet');
+			link.setAttribute('href', require('path').join(__dirname, 'node_modules/angular-material', 'angular-material.css'));
+			document.head.appendChild(link);
 		</script>
 	</body>
 </html>

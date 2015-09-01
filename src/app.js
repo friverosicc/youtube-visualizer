@@ -1,8 +1,12 @@
 (function() {		
-	var angular = require('../vendor/angular/');
+	var angular = require('angular');
+	require('angular-material');
 	require('./youtube');
 
-	angular.module('zbox-challenge', ['zbox-challenge.youtube'])
+	angular.module('zbox-challenge', [
+		'ngMaterial',
+		'zbox-challenge.youtube'
+	])
 	.config(function($sceDelegateProvider) {
 		$sceDelegateProvider.resourceUrlWhitelist([
 			// Allow same origin resource loads.
@@ -30,6 +34,7 @@
 			 */
 			$scope.buscarVideos = function() {
 				$scope.mostrarReproductor = false;
+				$scope.video.url = '';
 
 				youtubeResource.buscar($scope.filtro.text)
 				.then(function(response) {

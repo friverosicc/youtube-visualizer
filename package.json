@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/friverosicc/zbox-challenge#readme",
   "dependencies": {
+    "angular": "^1.4.5",
+    "angular-animate": "^1.4.5",
+    "angular-aria": "^1.4.5",
+    "angular-material": "^0.10.1",
     "electron-prebuilt": "^0.31.1"
   },
   "devDependencies": {
