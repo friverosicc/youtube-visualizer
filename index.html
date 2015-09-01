@@ -4,20 +4,29 @@
 		<title>Zbox Challenge</title>
 	</head>
 	<body ng-controller="AppController">
-		<iframe id="player" 
-				type="text/html" 
-				width="640" 
-				height="390" 
-				src="http://www.youtube.com/embed/kGpGw20O7uY?autoplay=1" 
-				frameborder="0">
-		</iframe>
+		<div>
+			<input 	type="text" 
+					ng-model="filtro.text">
+			</input>
+			<button ng-click="buscarVideos()">Buscar</button>
+		</div>
+		<div>
+			<iframe id="player" 
+					type="text/html" 
+					width="640" 
+					height="390" 
+					src="http://www.youtube.com/embed/kGpGw20O7uY?autoplay=1" 
+					frameborder="0">
+			</iframe>
+		</div>
 		<div>
 			<p>
 				{{videos}}
 			</p>
 		<div>
 
-		<script>
+		<!-- Controlador angular de la vista -->
+		<script>			
 			require('./src/app');
 		</script>
 	</body>
