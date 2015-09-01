@@ -7,10 +7,12 @@
 
 			function buscar(text, pageToken) {
 				var params = {
-					part 		: 'snippet',
-					q			: text,
-					key 		: _apiKey,
-					pageToken	: pageToken
+					part 			: 'snippet',
+					maxResults		: 20,
+					videoEmbeddable : 'true'
+					q				: text,
+					key 			: _apiKey,
+					pageToken		: pageToken
 				};			
 
 				return $http.get(_url, { params : params });
