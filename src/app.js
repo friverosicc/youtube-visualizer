@@ -1,29 +1,53 @@
-var angular = require('../vendor/angular/');
-require('./youtube');
+(function() {		
+	var angular = require('../vendor/angular/');
+	require('./youtube');
 
-angular.module('zbox-challenge', ['zbox-challenge.youtube'])
+	angular.module('zbox-challenge', ['zbox-challenge.youtube'])
+	.config(function($sceDelegateProvider) {
+		$sceDelegateProvider.resourceUrlWhitelist([
+			// Allow same origin resource loads.
+			'self',
+			// Allow loading from our assets domain.  Notice the difference between * and **.
+			'http://www.youtube.com/**'
+		]);
+	})
 
-/**
- * Controlador de la vista principal
- *
- * @author Francisco Riveros
- */
-.controller('AppController', ['$scope', 'youtubeResource',
-	function($scope, youtubeResource) {
-		$scope.videos = [];
+	/**
+	 * Controlador de la vista principal
+	 *
+	 * @author Francisco Riveros
+	 */
+	.controller('AppController', ['$scope', 'youtubeResource',
+		function($scope, youtubeResource) {
+			$scope.mostrarReproductor = false;
+			$scope.videos = [];
+			$scope.video = { url : '' };
+			var _url = 'http://www.youtube.com/embed/';
 
-		/**
-		 * Busca el listado de videos que coinciden con el 
-		 * texto del filtro.
-		 */
-		$scope.buscarVideos = function() {
-			youtubeResource.buscar($scope.filtro.text)
-			.then(function(response) {
-				$scope.videos = response.data.items;
-				$scope.filtro.nextPageToken = response.data.nextPageToken;
+			/**
+			 * Busca el listado de videos que coinciden con el 
+			 * texto del filtro.
+			 */
+			$scope.buscarVideos = function() {
+				$scope.mostrarReproductor = false;
 
-				console.log($scope.filtro);
-			});
-		};
-	}
-]);
+				youtubeResource.buscar($scope.filtro.text)
+				.then(function(response) {
+					$scope.videos = response.data.items;
+					$scope.filtro.nextPageToken = response.data.nextPageToken;				
+				});
+			};
+
+			/**
+			 * Comienza a reproducir el video seleccionado
+			 *
+			 * @param 'videoId' Código identificador del video
+			 */
+			$scope.reproducir = function(videoId) {	
+				$scope.video.url = _url + videoId + '?autoplay=1';			
+				$scope.mostrarReproductor = true;
+			};
+		}
+	]);
+
+})();

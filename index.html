@@ -15,13 +15,20 @@
 					type="text/html" 
 					width="640" 
 					height="390" 
-					src="http://www.youtube.com/embed/kGpGw20O7uY?autoplay=1" 
-					frameborder="0">
+					src="{{video.url}}" 
+					frameborder="0"
+					allowfullscreen
+					ng-show="mostrarReproductor">
 			</iframe>
 		</div>
 		<div>
 			<ul>
-				<li ng-repeat="video in videos">{{video.snippet.title}}</li>
+				<li ng-repeat="video in videos">
+					<div 	style="height:90px; width:120px; background-image: url({{video.snippet.thumbnails.default.url}});"
+							ng-click="reproducir(video.id.videoId)">
+					</div>
+					{{ video.snippet.title }}
+				</li>
 			</ul>
 		<div>
 
