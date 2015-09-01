@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="zbox-challenge">
+	<head>
+		<title>Zbox Challenge</title>
+	</head>
+	<body ng-controller="AppController">
+		<iframe id="player" 
+				type="text/html" 
+				width="640" 
+				height="390" 
+				src="http://www.youtube.com/embed/kGpGw20O7uY?autoplay=1" 
+				frameborder="0">
+		</iframe>
+		<div>
+			<p>
+				{{videos}}
+			</p>
+		<div>
+
+		<script>
+			require('./src/app');
+		</script>
+	</body>
+</html>
