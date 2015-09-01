@@ -21,12 +21,17 @@
 	 *
 	 * @author Francisco Riveros
 	 */
-	.controller('AppController', ['$scope', 'youtubeResource',
-		function($scope, youtubeResource) {
+	.controller('AppController', [
+		'$scope', 
+		'$location',
+		'$anchorScroll',
+		'youtubeResource',
+		function($scope, $location, $anchorScroll, youtubeResource) {
 			$scope.mostrarReproductor = false;
 			$scope.videos = [];
 			$scope.video = { url : '' };
-			var _url = 'http://www.youtube.com/embed/';
+
+			var _url = 'http://www.youtube.com/embed/';			
 
 			/**
 			 * Busca el listado de videos que coinciden con el 
@@ -51,6 +56,8 @@
 			$scope.reproducir = function(videoId) {	
 				$scope.video.url = _url + videoId + '?autoplay=1';			
 				$scope.mostrarReproductor = true;
+				$location.hash('player-container');
+				$anchorScroll();
 			};
 		}
 	]);

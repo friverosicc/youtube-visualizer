@@ -15,7 +15,7 @@
 		
 
 		<md-content layout="column" flex layout-padding>
-			<div layout="row" flex>
+			<div layout="row" flex id="player-container">
 				<iframe id="player" 
 						type="text/html" 
 						flex
@@ -28,8 +28,9 @@
 			</div>
 			<div layout="column" layout-margin>
 				<div layout="row" ng-repeat="video in videos" layout-margin>
-					<img 	ng-src="{{video.snippet.thumbnails.default.url}}" ng-click="reproducir(video.id.videoId)"
-							style="cursor:pointer;"/>
+					<div 	ng-click="reproducir(video.id.videoId)"
+							style="width: 150px; height:100px; background-size:cover; cursor:pointer; background-image: url({{video.snippet.thumbnails.high.url}});">
+					</div>
 
 					<div layout="column" layout-align="start start">
 						<h3>{{ video.snippet.title }}</h3>						
@@ -37,7 +38,7 @@
 					</div>
 				</div>								
 			</div>
-			
+				
 			
 		<!-- Controlador angular de la vista -->
 		<script>			
