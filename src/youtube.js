@@ -2,6 +2,8 @@
 	angular.module('zbox-challenge.youtube', [])
 	/**
 	 * Servicio que se encarga de realizar las búsquedas sobre la API de Youtube
+	 *
+	 * @author Francisco Riveros
 	 */
 	.factory('youtubeResource', ['$http', 
 		function($http) {

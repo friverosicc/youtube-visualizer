@@ -57,6 +57,10 @@
 				});
 			};
 
+			/**
+			 * Busca los siguientes videos que conciden con el
+			 * texto de búsqueda.
+			 */
 			$scope.siguientePagina = function() {
 				_buscandoMas = true;	
 				$scope.buscarVideos();			
