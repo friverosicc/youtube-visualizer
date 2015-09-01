@@ -30,6 +30,9 @@
 			$scope.mostrarReproductor = false;
 			$scope.videos = [];
 			$scope.video = { url : '' };
+			$scope.filtro = {
+				text : ''
+			};
 			$scope.mostrarBotonSiguiente = false;
 
 			var _url = 'http://www.youtube.com/embed/';
@@ -77,6 +80,8 @@
 				$location.hash('player-container');
 				$anchorScroll();
 			};
+
+			$scope.buscarVideos();
 		}
 	]);
 

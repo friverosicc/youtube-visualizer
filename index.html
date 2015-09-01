@@ -7,7 +7,7 @@
 		<md-toolbar>
 			<div class="md-toolbar-tools" layout="row" layout-align="start end">
 				<md-input-container flex="50" style="padding-bottom:0px;">
-					<input  style="color:#fff;" ng-model="filtro.text"></input>
+					<input  id="filtro" style="color:#fff;" ng-model="filtro.text" placeholder="Empieza a buscar"></input>
 				</md-input-container>
 				<md-button ng-click="buscarVideos()">Buscar</md-button>
 			</div>
@@ -66,8 +66,8 @@
 		</script>
 		<style>
 			md-input-container .md-input {
-				border-color : #fff;
-			}
+				border-color : #fff;				
+			}				
 
 			md-input-container:not(.md-input-invalid).md-input-focused .md-input {
 				border-color : #fff;	
