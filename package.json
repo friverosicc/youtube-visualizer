@@ -4,7 +4,10 @@
   "description": "Desafio de zbox para evaluar habilidades",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build-linux": "electron-packager . zbox-challenge --platform=linux --arch=x64 --version=0.31.1 --out=dist --ignore=\"node_modules/(electron-packager|electron-prebuilt|asar)\" --asar",
+    "build-darwin": "electron-packager . zbox-challenge --platform=darwin --arch=x64 --version=0.31.1 --out=dist --ignore=\"node_modules/(electron-packager|electron-prebuilt|asar)\" --asar",
+    "build-win32": "electron-packager . zbox-challenge --platform=win32 --arch=x64 --version=0.31.1 --out=dist --ignore=\"node_modules/(electron-packager|electron-prebuilt|asar)\" --asar"
   },
   "repository": {
     "type": "git",
@@ -22,5 +25,9 @@
     "angular-aria": "^1.4.5",
     "angular-material": "^0.10.1",
     "electron-prebuilt": "^0.31.1"
+  },
+  "devDependencies": {
+    "asar": "^0.8.0",
+    "electron-packager": "^5.0.2"
   }
 }
