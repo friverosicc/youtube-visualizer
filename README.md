@@ -12,3 +12,13 @@ Visualizador de Videos de Youtube, utilizando nodejs junto con atom electron.
   * Run `npm install`  
   * Run `npm start`
 
+## Generación de binarios
+Para Linux
+  * Run `npm run build-linux`
+
+Para Mac
+  * Run `npm run build-darwin`
+
+Para Windows
+  * Run `npm run build-win32`
+
